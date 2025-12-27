@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h2>Customer</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Save</button>
+    <a href="{% url 'customer_list' %}" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+<a href="{% url 'customer_list' %}">Back</a>
+{% endblock %}

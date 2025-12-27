@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h2>Service Job Details</h2>
+
+<p><strong>Customer:</strong> {{ job.customer.name }}</p>
+<p><strong>Phone:</strong> {{ job.customer.phone }}</p>
+<p><strong>Device:</strong> {{ job.device }}</p>
+<p><strong>Problem:</strong> {{ job.problem }}</p>
+<p><strong>Status:</strong> {{ job.get_status_display }}</p>
+<p><strong>Estimated Cost:</strong> {{ job.estimated_cost }}</p>
+<p><strong>Created At:</strong> {{ job.created_at }}</p>
+
+<a href="{% url 'servicejob_list' %}">← Back to Jobs</a>
+{% endblock %}

@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: smart-service-manager
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn ssm.wsgi:application

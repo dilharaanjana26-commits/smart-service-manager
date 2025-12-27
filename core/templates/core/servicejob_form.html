@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h2>Add Service Job</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Save Job</button>
+    <a href="{% url 'servicejob_list' %}" class="btn btn-secondary">Cancel</a>
+
+</form>
+
+<a href="{% url 'servicejob_list' %}">Back to Jobs</a>
+{% endblock %}

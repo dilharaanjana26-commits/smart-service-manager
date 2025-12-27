@@ -1,0 +1,35 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Dashboard</h1>
+
+<div class="dashboard-grid">
+
+    <div class="card">
+        <h3>Total Jobs</h3>
+        <p class="number">{{ total_jobs }}</p>
+    </div>
+
+    <div class="card pending">
+        <h3>Pending</h3>
+        <p class="number">{{ pending_jobs }}</p>
+    </div>
+
+    <div class="card progress">
+        <h3>In Progress</h3>
+        <p class="number">{{ in_progress_jobs }}</p>
+    </div>
+
+    <div class="card completed">
+        <h3>Completed</h3>
+        <p class="number">{{ completed_jobs }}</p>
+    </div>
+
+    <div class="card revenue">
+        <h3>Total Revenue</h3>
+        <p class="number">Rs {{ total_revenue }}</p>
+    </div>
+
+</div>
+
+{% endblock %}

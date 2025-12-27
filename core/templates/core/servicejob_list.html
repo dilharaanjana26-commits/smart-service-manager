@@ -1,0 +1,60 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<h1>Service Jobs</h1>
+
+<form method="get" style="margin-bottom:20px;">
+    <input type="text" name="q" placeholder="Search customer or device"
+           value="{{ query|default:'' }}">
+
+    <select name="status">
+        <option value="">All Status</option>
+        {% for key, label in status_choices %}
+            <option value="{{ key }}" {% if status == key %}selected{% endif %}>
+                {{ label }}
+            </option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Filter</button>
+</form>
+
+<a href="{% url 'export_servicejobs_csv' %}?status={{ status }}&q={{ query }}">
+    Export CSV
+</a>
+
+<a href="{% url 'servicejob_create' %}">+ Add Service Job</a>
+
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Customer</th>
+        <th>Device</th>
+        <th>Status</th>
+        <th>Cost</th>
+    </tr>
+
+    {% for job in jobs %}
+    <tr>
+        <td>{{ job.customer.name }}</td>
+        <td>
+            <a href="{% url 'servicejob_detail' job.pk %}">
+                {{ job.device }}
+            </a>
+        </td>
+        <td>
+            <span class="status {{ job.status }}">
+             {{ job.get_status_display }}
+        </span>
+        </td>
+
+        <td>{{ job.estimated_cost }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td colspan="5">No service jobs found</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
