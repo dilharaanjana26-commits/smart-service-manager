@@ -1,8 +1,12 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
+def home(request):
+    return redirect("dashboard")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("core.urls")),      # our app
-    path("accounts/", include("django.contrib.auth.urls")),  # login/logout
+    path("", home),
+    path("", include("core.urls")),
 ]
